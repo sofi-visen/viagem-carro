@@ -15,13 +15,24 @@
         <label for="modelo" id="modelo">Modelo do carro</label>
         <input type="text" id="modelo" placeholder="carro"required>
         <br>
-        <label for="placa" id="placa">Placa do Carro</label>
-        <input type="text" id="placa" pattern="[0-9]+$" placeholder="placa" required>
+        <label for="origem" id="origem">Ponto de origem</label>
+        <input type="text" id="origem" placeholder="origem"required>
         <br>
-        <label for="iArea" id="lArea">Area</label>
-        <input type="text" id="iArea" readonly>
+        <label for="destino" id="destino">Destino final</label>
+        <input type="text" id="destino" placeholder="destino"required>
+        <br>
+        <label for="placa" id="placa">Placa do Carro</label>
+        <input type="text" id="placa" placeholder="placa" required>
+        <br>
+        <label for="km" id="km">Km percorridos</label>
+        <input type="text" id="km" pattern="[0-9]+$" placeholder="km" required>
+        <br>
+        <label for="litros" id="litros">Litros gastos</label>
+        <input type="text" id="litros" pattern="[0-9]+$" placeholder="litros" required>
+        <br>
+        <label for="valor" id="valor">Valor do combustível</label>
+        <input type="text" id="valor" pattern="[0-9]+$" placeholder="valor" required>
         <br><br>
-
         <input type="submit" id="bIncluir" value="Incluir">&nbsp;  
         <input type="button" id="bListar" value="Listar">&nbsp;
         <input type="reset" id="bLimpar" value="Limpar">  
