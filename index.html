@@ -31,34 +31,37 @@
         <input type="text" id="litros" pattern="[0-9]+$" placeholder="litros" required>
         <br>
         <label for="valor" id="valor">Valor do combustível</label>
-        <input type="text" id="valor" pattern="[0-9]+$" placeholder="valor" required>
+        <input type="text" id="valor" placeholder="valor" required>
         <br><br>
         <input type="submit" id="bIncluir" value="Incluir">&nbsp;  
         <input type="button" id="bListar" value="Listar">&nbsp;
         <input type="reset" id="bLimpar" value="Limpar">  
     </form>
-    <p id="pObs">Duplo clique no Nro para Apagar</p>
+    <p id="pObs">clique 2x no número para apagar</p>
     <p id="pMostra"></p>
 </body>
-    <script src="terrenos.js" language="JavaScript"></script>
+    <script src="funcoes.js" language="JavaScript"></script>
     <script language="JavaScript">
-        document.getElementById("fTerreno").onsubmit = function() {
+        document.getElementById("fviagem").onsubmit = function() {
             //console.log(document.getElementById("iProprietario").value);
-            let varea = fIncluirTerreno(document.getElementById("iProprietario").value,
-                            document.getElementById("tEndereco").value,
-                            document.getElementById("iLargura").value,
-                            document.getElementById("iComprimento").value);                            
-            document.getElementById("iArea").value = varea;
-            document.getElementById("pMostra").innerHTML = "Nro Terenos: "+fContaTerrenos();
+            let varea = fIncluirviagem(document.getElementById("motorista").value,
+                            document.getElementById("modelo").value,
+                            document.getElementById("origem").value,
+                            document.getElementById("destino").value,
+                            document.getElementById("placa").value,
+                            document.getElementById("km").value,
+                            document.getElementById("litros").value,
+                            document.getElementById("valor").value,);                            
+            document.getElementById("pMostra").innerHTML = "número de viagens: "+fContaviagens();
         };
 
         document.getElementById("bListar").onclick = function() {
-            document.getElementById("pMostra").innerHTML = fListarTerrenos(" | ","<br>")
-            +"Nro Terenos: "+fContaTerrenos();
+            document.getElementById("pMostra").innerHTML = fListarviagens(" | ","<br>")
+            +"número de viagens: "+fContaviagens();
         }
 
-        document.getElementById("fTerreno").onreset = function() {
-            fLimparTerrenos();
+        document.getElementById("fviagem").onreset = function() {
+            fLimparviagens();
         }
     </script>
 </html>
