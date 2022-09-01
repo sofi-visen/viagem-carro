@@ -82,7 +82,7 @@ function fListarviagens(separa = ' : ',  separadorlinha = ";") {
   let retorno = "";
   viagens.forEach(function(vviagem,i) {
     retorno += '<strong ondblclick="fApagaviagem('+i+')">&nbsp;'+i+'&nbsp;</strong>'+separa+vviagem._motorista + separa + vviagem._modelo + separa + vviagem._placa 
-    + separa + vviagem._origem + separa + vviagem._destino + separa + vviagem._km + separa + vviagem._litros + separa + vviagem._valor + separa + vviagem.autonomia()+separadorlinha;
+    + separa + vviagem._origem + separa + vviagem._destino + separa + vviagem._km + separa + vviagem._litros + separa + vviagem._valor + separa + vviagem.autonomia()+ separa + vviagem.gasto_km()+ separa + vviagem.gasto_total()+separadorlinha;
   });
   return retorno;
 }
