@@ -13,10 +13,10 @@ class Viagem {
         return this.km / this.litros;
     }
     gasto_km() {
-        return this.autonomia / this.valor;
+        return  this.valor / this.autonomia();
     }
     gasto_total() {
-        return this.gasto_km * this.km;
+        return this.gasto_km() * this.km;
     }
 
     set _setMotorista(motorista) {
@@ -72,17 +72,17 @@ class Viagem {
 
 var viagens = [];
 
-function fIncluirviagen(motorista, modelo, placa, origem, destino, km, litros, valor) {
+function fIncluirviagem(motorista, modelo, placa, origem, destino, km, litros, valor) {
    let vviagem = new Viagem(motorista, modelo, placa, origem, destino, km, litros, valor);
    viagens.push(vviagem);
-   return vviagem.autonomia();
+   return vviagem;
 }
 
 function fListarviagens(separa = ' : ',  separadorlinha = ";") {
   let retorno = "";
   viagens.forEach(function(vviagem,i) {
-    retorno += '<strong ondblclick="fApagaviagem('+i+')">&nbsp;'+i+'&nbsp;</strong>'+separa+vviagem._motorista + separa + vviagem._modelo + separa + vviagem._placa
-    +separa + vviagem._origem + +separa + vviagem._destino + separa + vviagem._km + separa + vviagem._litros +separa + vviagem._valor + separa + vviagem.autonomia()+separadorlinha;
+    retorno += '<strong ondblclick="fApagaviagem('+i+')">&nbsp;'+i+'&nbsp;</strong>'+separa+vviagem._motorista + separa + vviagem._modelo + separa + vviagem._placa 
+    + separa + vviagem._origem + separa + vviagem._destino + separa + vviagem._km + separa + vviagem._litros + separa + vviagem._valor + separa + vviagem.autonomia()+separadorlinha;
   });
   return retorno;
 }
@@ -92,10 +92,7 @@ function fLimparviagens() {
 }
 
 function fApagaviagem(i) {
-  //console.log(i);
-  viagens.splice(i,1);
-  //console.log(viagens);
-  
+  viagens.splice(i,1); 
 }
 
 function fContaviagens() {

@@ -7,56 +7,66 @@
     <title>Viagem de carro</title>
 </head>
 <body>
-    <h2>Acompanhe sua viagem</h2>
+    <h2>Informe os dados</h2>
     <form id="fviagem" action="#" method="get">
-        <label for="motorista" id="motorista">Nome do motorista</label>
-        <input type="text" id="motorista" placeholder="nome" required>
+        <label for="imotorista" id="lmotorista">Nome do motorista</label>
+        <input type="text" id="imotorista" placeholder="nome" required value="teste motorista">
         <br>
-        <label for="modelo" id="modelo">Modelo do carro</label>
-        <input type="text" id="modelo" placeholder="carro"required>
+        <label for="imodelo" id="lmodelo">Modelo do carro</label>
+        <input type="text" id="imodelo" placeholder="carro"required value="teste modelo">
         <br>
-        <label for="origem" id="origem">Ponto de origem</label>
-        <input type="text" id="origem" placeholder="origem"required>
+        <label for="iorigem" id="lorigem">Ponto de origem</label>
+        <input type="text" id="iorigem" placeholder="origem"required value="teste origem">
         <br>
-        <label for="destino" id="destino">Destino final</label>
-        <input type="text" id="destino" placeholder="destino"required>
+        <label for="idestino" id="ldestino">Destino final</label>
+        <input type="text" id="idestino" placeholder="destino"required  value="teste destino">
         <br>
-        <label for="placa" id="placa">Placa do Carro</label>
-        <input type="text" id="placa" placeholder="placa" required>
+        <label for="iplaca" id="lplaca">Placa do Carro</label>
+        <input type="text" id="iplaca" placeholder="xxxxxxx" required  value="placa">
         <br>
-        <label for="km" id="km">Km percorridos</label>
-        <input type="text" id="km" pattern="[0-9]+$" placeholder="km" required>
+        <label for="ikm" id="lkm">Km percorridos</label>
+        <input type="text" id="ikm" placeholder="00,00" required value="200">
         <br>
-        <label for="litros" id="litros">Litros gastos</label>
-        <input type="text" id="litros" pattern="[0-9]+$" placeholder="litros" required>
+        <label for="ilitros" id="llitros">Litros gastos</label>
+        <input type="text" id="ilitros" placeholder="00,00" required value="9">
         <br>
-        <label for="valor" id="valor">Valor do combustível</label>
-        <input type="text" id="valor" placeholder="valor" required>
+        <label for="ivalor" id="lvalor">Valor do combustível</label>
+        <input type="text" id="ivalor" placeholder="00,00" required value="5">
+        <br><br>
+        <h2>Acompanhe sua viagem</h2>
+        <label for="iautonomia" id="lautonomia">Autonomia</label>
+        <input type="text" id="iautonomia" readonly>
+        <br>
+        <label for="igasto" id="lgasto">Gasto p/km</label>
+        <input type="text" id="igasto" readonly>
+        <br><label for="itotal" id="ltotal">Gasto total</label>
+        <input type="text" id="itotal" readonly>
         <br><br>
         <input type="submit" id="bIncluir" value="Incluir">&nbsp;  
         <input type="button" id="bListar" value="Listar">&nbsp;
         <input type="reset" id="bLimpar" value="Limpar">  
     </form>
-    <p id="pObs">clique 2x no número para apagar</p>
+    <p id="pObs">clique 2x para apagar</p>
     <p id="pMostra"></p>
 </body>
     <script src="funcoes.js" language="JavaScript"></script>
     <script language="JavaScript">
         document.getElementById("fviagem").onsubmit = function() {
-            //console.log(document.getElementById("iProprietario").value);
-            let varea = fIncluirviagem(document.getElementById("motorista").value,
-                            document.getElementById("modelo").value,
-                            document.getElementById("origem").value,
-                            document.getElementById("destino").value,
-                            document.getElementById("placa").value,
-                            document.getElementById("km").value,
-                            document.getElementById("litros").value,
-                            document.getElementById("valor").value,);                            
+            let vautonomia = fIncluirviagem(document.getElementById("imotorista").value,
+                            document.getElementById("imodelo").value,
+                            document.getElementById("iorigem").value,
+                            document.getElementById("idestino").value,
+                            document.getElementById("iplaca").value,
+                            document.getElementById("ikm").value,
+                            document.getElementById("ilitros").value,
+                            document.getElementById("ivalor").value);     
+            document.getElementById("iautonomia").value = vautonomia.autonomia();                       
+            document.getElementById("igasto").value = vautonomia.gasto_km();   
+            document.getElementById("itotal").value = vautonomia.gasto_total();                       
             document.getElementById("pMostra").innerHTML = "número de viagens: "+fContaviagens();
         };
-
         document.getElementById("bListar").onclick = function() {
-            document.getElementById("pMostra").innerHTML = fListarviagens(" | ","<br>")
+            document.getElementById("pMostra").innerHTML = fListarviagens(" | ","<br><br>")
             +"número de viagens: "+fContaviagens();
         }
 
